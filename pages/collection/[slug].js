@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Image from "next/image";
 import Sales from "../../components/sales";
 
 const Collection = ({ collections, sales }) => {
@@ -9,10 +10,10 @@ const Collection = ({ collections, sales }) => {
 
   return (
     <article>
-      <img src={item.banner_image_url} />
+      <Image src={item.banner_image_url} alt={`${item.name} banner`} />
       <div className="container mx-auto">
         <div className="flex items-center justify-center my-8">
-          <img className="pr-5" src={item.image_url} />
+          <Image className="pr-5" src={item.image_url} alt={`${item.name} thumbnail`} />
           <div>
             <h1 className="">{item.name}</h1>
             <h2 className="">Floor price: {item.stats.floor_price}Ξ</h2>
@@ -22,14 +23,14 @@ const Collection = ({ collections, sales }) => {
             {item.twitter_username && <p>Twitter: twitter.com/{item.twitter_username}</p>}
             {item.discord_url && <p>Discord: {item.discord_url}</p>}
             {item.instagram_username && <p>Twitter: twitter.com/{item.instagram_username}</p>}
-            <p><a href={`https://etherscan.io/address/${item.primary_asset_contracts[0].address}`}>Etherscan</a></p>
+            <p><a href={`https://etherscan.io/address/${item.primary_asset_contracts[0].address}`} target="_blank" rel="noreferrer">Etherscan</a></p>
 
           </div>
           <div>
             <ul>
-              <li><a href={`https://opensea.io/collection/${item.slug}`} target="_blank">OpenSea</a></li>
-              <li><a href={`https://x2y2.io/collection/${item.slug}/items`} target="_blank">X2Y2</a></li>
-              <li><a href={`https://looksrare.org/collections/${item.primary_asset_contracts[0].address}`} target="_blank">Looksrare</a></li>
+              <li><a href={`https://opensea.io/collection/${item.slug}`} target="_blank" rel="noreferrer">OpenSea</a></li>
+              <li><a href={`https://x2y2.io/collection/${item.slug}/items`} target="_blank" rel="noreferrer">X2Y2</a></li>
+              <li><a href={`https://looksrare.org/collections/${item.primary_asset_contracts[0].address}`} target="_blank" rel="noreferrer">Looksrare</a></li>
             </ul>
           </div>
         </div>

@@ -26,7 +26,7 @@ export default function Featured({ collection }) {
       {featuredData.map(item => (
         <div className="card" key={item.collection.slug}>
           <Link href={`/collection/${item.collection.slug}`}>
-            <a><img src={item.collection.image_url} /></a>
+            <a><Image src={item.collection.image_url} alt={`${item.name} thumbnail`} /></a>
           </Link>
           <h1>
             <Link href={`/collection/${item.collection.slug}`}>
