@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Featured({ collection }) {
 
   const [featuredData, setFeaturedData] = useState([])
 
-  const options = {method: 'GET'};
 
-  const urls = collection.map(slug => (
-    'https://api.opensea.io/api/v1/collection/' + slug.collection_slug
-  ))
 
   useEffect(() => {
+    const options = {method: 'GET'};
+
+    const urls = collection.map(slug => (
+      'https://api.opensea.io/api/v1/collection/' + slug.collection_slug
+    ))
+
     Promise.all(urls.map(url =>
       fetch(url, options)
         .then(response => response.json())

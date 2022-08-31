@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 const Sales = ({ ...sales }) => {
 
@@ -16,8 +17,8 @@ const Sales = ({ ...sales }) => {
       <div className="grid grid-cols-5">
         {tokens.map(token => (
           <div key={token.id}>
-          <a href={`https://opensea.io/assets/ethereum/${token.asset.asset_contract.address}/${token.asset.token_id}`} target="_blank">
-            <img src={token.asset.image_thumbnail_url} />
+          <a href={`https://opensea.io/assets/ethereum/${token.asset.asset_contract.address}/${token.asset.token_id}`} target="_blank" rel="noreferrer">
+            <Image src={token.asset.image_thumbnail_url} alt="token image" />
           </a>
             Sale price: {(token.total_price * (10 ** -18)).toFixed(3)}<br />
             Sale date: {saleDate(token.event_timestamp)}
