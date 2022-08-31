@@ -7,13 +7,19 @@ const Collection = ({ collections, sales }) => {
   const slug = router.query
 
   const item = collections.collection
+  const style = {
+    backgroundImage: `url(${item.banner_image_url})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center center"
+  }
 
   return (
     <article>
-      <Image src={item.banner_image_url} alt={`${item.name} banner`} />
+      <div className="relative w-full h-56" style={style}>&nbsp;</div>
       <div className="container mx-auto">
         <div className="flex items-center justify-center my-8">
-          <Image className="pr-5" src={item.image_url} alt={`${item.name} thumbnail`} />
+          <Image className="pr-5" src={item.image_url} alt={`${item.name} thumbnail`} width={128} height={128} />
           <div>
             <h1 className="">{item.name}</h1>
             <h2 className="">Floor price: {item.stats.floor_price}Ξ</h2>

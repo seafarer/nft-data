@@ -16,10 +16,10 @@ const Sales = ({ ...sales }) => {
       <h2>Over the last seven days</h2>
       <div className="grid grid-cols-5">
         {tokens.map(token => (
-          <div key={token.id}>
-          <a href={`https://opensea.io/assets/ethereum/${token.asset.asset_contract.address}/${token.asset.token_id}`} target="_blank" rel="noreferrer">
-            <Image src={token.asset.image_thumbnail_url} alt="token image" />
-          </a>
+          <div className="flex flex-col" key={token.id}>
+            <a href={`https://opensea.io/assets/ethereum/${token.asset.asset_contract.address}/${token.asset.token_id}`} target="_blank" rel="noreferrer">
+              <Image className="block" src={token.asset.image_thumbnail_url} alt="token image" width={128} height={128} />
+            </a>
             Sale price: {(token.total_price * (10 ** -18)).toFixed(3)}<br />
             Sale date: {saleDate(token.event_timestamp)}
           </div>

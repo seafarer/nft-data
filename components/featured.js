@@ -6,8 +6,6 @@ export default function Featured({ collection }) {
 
   const [featuredData, setFeaturedData] = useState([])
 
-
-
   useEffect(() => {
     const options = {method: 'GET'};
 
@@ -18,10 +16,10 @@ export default function Featured({ collection }) {
     Promise.all(urls.map(url =>
       fetch(url, options)
         .then(response => response.json())
-    )).then(data => setFeaturedData(data))
-      .catch((error) => {
+      )).then(data => setFeaturedData(data))
+        .catch((error) => {
         console.error(error.message)
-      })
+    })
   }, [])
 
   return (
@@ -29,7 +27,7 @@ export default function Featured({ collection }) {
       {featuredData.map(item => (
         <div className="card" key={item.collection.slug}>
           <Link href={`/collection/${item.collection.slug}`}>
-            <a><Image src={item.collection.image_url} alt={`${item.name} thumbnail`} /></a>
+            <a><Image src={item.collection.image_url} alt={`${item.name} thumbnail`} width={128} height={128} /></a>
           </Link>
           <h1>
             <Link href={`/collection/${item.collection.slug}`}>
