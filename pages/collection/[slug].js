@@ -1,6 +1,14 @@
 import { useRouter } from 'next/router'
-import Image from "next/image";
+import Image from "next/future/image";
+import Link from "next/link"
+import ReactMarkdown from 'react-markdown';
 import Sales from "../../components/sales";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDiscord } from '@fortawesome/free-brands-svg-icons'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
+import { faChevronRight } from '@fortawesome/pro-regular-svg-icons'
 
 const Collection = ({ collections, sales }) => {
   const router = useRouter()
@@ -16,54 +24,76 @@ const Collection = ({ collections, sales }) => {
 
   return (
     <article>
-      <div className="relative w-full h-56" style={style}>&nbsp;</div>
-      <div className="container mx-auto">
-        <div className="flex items-center justify-center my-8">
-          <Image className="pr-5" src={item.image_url} alt={`${item.name} thumbnail`} width={128} height={128} />
-          <div>
-            <h1 className="">{item.name}</h1>
-            <h2 className="">Floor price: {item.stats.floor_price}Ξ</h2>
+      <div className="relative w-full h-vh-25" style={style}>
+        <div className="absolute top-0 left-0 bg-indigo-100 p-1.5 pr-2.5">
+          <div className="text-xs flex align-center text-slate-500">
+            <Link href="/">
+              <a className="text-slate-800">Home</a>
+            </Link>
+            <span className="text-slate-600 mx-1">
+              <FontAwesomeIcon icon={faChevronRight} className="w-1.5 inline" />
+            </span> Collections
+            <span className="text-slate-600 mx-1">
+              <FontAwesomeIcon icon={faChevronRight} className="inline w-1.5" />
+            </span> {item.name}
           </div>
-          <div>
-            {item.external_url && <p>Website: {item.external_url}</p>}
-            {item.twitter_username && <p>Twitter: twitter.com/{item.twitter_username}</p>}
-            {item.discord_url && <p>Discord: {item.discord_url}</p>}
-            {item.instagram_username && <p>Twitter: twitter.com/{item.instagram_username}</p>}
-            <p><a href={`https://etherscan.io/address/${item.primary_asset_contracts[0].address}`} target="_blank" rel="noreferrer">Etherscan</a></p>
+        </div>
+      </div>
 
+
+      <div className="container mx-auto">
+
+        <div className="flex justify-between items-center my-4">
+
+          <div className="flex items-center">
+            <Image className="mr-8 border border-white border-4 drop-shadow-lg rounded-full" src={item.image_url.replace('=s120', '=s180')} priority={true} alt={`${item.name} thumbnail`} width={180} height={180} />
+            <div>
+              <h1 className="text-4xl mb-4">{item.name}</h1>
+              <h2 className="text-3xl font-bold text-slate-500">{item.stats.floor_price}Ξ </h2>
+              <p className="condensed text-slate-400">current floor</p>
+            </div>
           </div>
-          <div>
-            <ul>
-              <li><a href={`https://opensea.io/collection/${item.slug}`} target="_blank" rel="noreferrer">OpenSea</a></li>
-              <li><a href={`https://x2y2.io/collection/${item.slug}/items`} target="_blank" rel="noreferrer">X2Y2</a></li>
-              <li><a href={`https://looksrare.org/collections/${item.primary_asset_contracts[0].address}`} target="_blank" rel="noreferrer">Looksrare</a></li>
-            </ul>
+
+          <div className="flex gap-12">
+            <div className="text-center">
+              <p className="text-3xl font-bold text-slate-500">{item.stats.total_supply.toLocaleString("en-US")}</p>
+              <p className="condensed text-slate-400">Supply</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-slate-500">{item.stats.num_owners.toLocaleString("en-US")}</p>
+              <p className="condensed text-slate-400">Owners</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-slate-500">{Math.round((item.stats.num_owners / item.stats.total_supply) * 100)}%</p>
+              <p className="condensed text-slate-400">Owner percent</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-slate-500">{item.dev_seller_fee_basis_points * .01}%</p>
+              <p className="condensed text-slate-400">Creator royalty</p>
+            </div>
           </div>
+
         </div>
-        <div>
-          {item.description}
-        </div>
-        <div className="flex justify-around">
-          <p>Supply: {item.stats.total_supply}</p>
-          <p>Owners: {item.stats.num_owners}</p>
-          <p>Owner percent: {Math.round((item.stats.num_owners / item.stats.total_supply) * 100)}%</p>
-          <p>Creator royalty: {item.dev_seller_fee_basis_points * .01}%</p>
-        </div>
-        <div className="flex justify-around">
-          <div>
+
+
+        <div className="grid grid-cols-3 gap-4 mt-10">
+          <div className="bg-gradient-to-b from-slate-100 to-slate-50 border-slate-200 border p-5 rounded-lg relative">
+            <div className="absolute right-0 top-0 text-slate-50 text-6xl font-bold leading-statbox">24<span className="font-normal">h</span></div>
             <p>One day sales: {item.stats.one_day_sales}</p>
             <p>One day volume: {Math.round(item.stats.one_day_volume)}Ξ</p>
             <p>One day change: {(item.stats.one_day_change).toFixed(2)}%</p>
             <p>One day avg price: {item.stats.one_day_average_price.toFixed(2)}Ξ</p>
           </div>
-          <div>
+          <div className="bg-gradient-to-b from-slate-100 to-slate-50 border-slate-200 border p-5 rounded-lg relative">
+            <div className="absolute right-0 top-0 text-slate-50 text-6xl font-bold leading-statbox">7<span className="font-normal">d</span></div>
             <p>Seven day sales: {item.stats.seven_day_sales}</p>
             <p>Seven day volume: {Math.round(item.stats.seven_day_volume).toLocaleString("en-US")}Ξ</p>
             <p>Seven day change: {item.stats.seven_day_change.toFixed(2)}%</p>
             <p>Seven day avg. price: {Math.round(item.stats.seven_day_average_price)}Ξ</p>
             <p>Seven day difference: {Math.round(item.stats.seven_day_difference)}Ξ</p>
           </div>
-          <div>
+          <div className="bg-gradient-to-b from-slate-100 to-slate-50 border-slate-200 border p-5 rounded-lg relative">
+            <div className="absolute right-0 top-0 text-slate-50 text-6xl font-bold leading-statbox">30<span className="font-normal">d</span></div>
             <p>30 day sales: {item.stats.thirty_day_sales}Ξ</p>
             <p>30 day volume: {Math.round(item.stats.thirty_day_volume).toLocaleString("en-US")}Ξ</p>
             <p>30 day change: {item.stats.thirty_day_change.toFixed(2)}%</p>
@@ -71,8 +101,9 @@ const Collection = ({ collections, sales }) => {
             <p>30 day difference{Math.round(item.stats.thirty_day_difference).toLocaleString("en-US")}Ξ</p>
           </div>
         </div>
+
+        <Sales {...sales} />
       </div>
-      <Sales {...sales} />
     </article>
   )
 

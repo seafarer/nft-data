@@ -9,12 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-brands-svg-icons": "^6.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/pro-duotone-svg-icons": "^6.2.0",
+    "@fortawesome/pro-light-svg-icons": "^6.2.0",
+    "@fortawesome/pro-regular-svg-icons": "^6.2.0",
+    "@fortawesome/pro-solid-svg-icons": "^6.2.0",
+    "@fortawesome/pro-thin-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@fortawesome/sharp-solid-svg-icons": "^6.2.0",
+    "@headlessui/react": "^1.6.6",
     "algoliasearch": "^4.14.2",
     "cosmicjs": "^4.2.7",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-instantsearch-hooks-web": "^6.32.1"
+    "react-instantsearch-hooks-web": "^6.32.1",
+    "react-markdown": "^8.0.3"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.4",

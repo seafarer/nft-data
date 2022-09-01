@@ -5,6 +5,11 @@ const nextConfig = {
   images: {
     domains: ['imgix.cosmicjs.com', 'lh3.googleusercontent.com'],
   },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
 }
 
 module.exports = nextConfig

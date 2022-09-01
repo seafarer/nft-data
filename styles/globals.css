@@ -1,3 +1,23 @@
+@import url("https://use.typekit.net/ftk1knh.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-2xl font-display font-bold;
+  }
+
+  h2 {
+    @apply text-xl font-display;
+  }
+
+  a,
+  button {
+    transition: all 200ms ease-in-out;
+  }
+}
+
+.collection-description p {
+  margin-bottom: 1em;
+}
