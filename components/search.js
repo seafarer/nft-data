@@ -4,7 +4,6 @@ import Link from "next/link";
 
 const algoliaId = process.env.NEXT_PUBLIC_ALGOLIA_APPID
 const alogliaApi = process.env.NEXT_PUBLIC_ALGOLIA_API
-console.log(alogliaApi)
 const searchClient = algoliasearch(algoliaId, alogliaApi);
 
 function Hit({ hit }) {
