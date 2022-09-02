@@ -8,8 +8,12 @@ const searchClient = algoliasearch(algoliaId, alogliaApi);
 
 function Hit({ hit }) {
   return (
-      <div className="py-2">
-        <Link href={`/collection/${hit.slug}`}>{hit.name}</Link>
+      <div>
+        <Link href={`/collection/${hit.slug}`}>
+          <a className="py-2 px-1.5 hover:bg-yellow-100 block">
+            {hit.name}
+          </a>
+        </Link>
       </div>
   );
 }
@@ -40,7 +44,7 @@ export default function Search() {
         />
         <EmptyQueryBoundary fallback={null}>
           <Hits hitComponent={Hit} classNames={{
-            root: 'absolute bg-white pt-2 px-3 pb-3 right-0 left-6 drop-shadow top-[84px] right-6'
+            root: 'absolute bg-white pt-2 px-1.5 pb-3 right-0 left-6 drop-shadow top-[84px] right-6'
           }} />
         </EmptyQueryBoundary>
       </InstantSearch>
