@@ -8,7 +8,7 @@ export default function Navbar() {
           NFT DATA
         </Link>
       </h1>
-      <h2 className="text-indigo-300 text-base font-condensed">Quick stats for your favorite NFT collections on the Ethereum blockchain</h2>
+      <h2 className="text-indigo-300 text-base hidden md:block">Quick stats for your favorite NFT collections on the Ethereum blockchain</h2>
     </header>
   )
 }
