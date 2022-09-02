@@ -15,11 +15,12 @@ export default function Marketplaces({ ...item }) {
           <X2y2 width={20} height={20} className="text-slate-400 fill-current" />
         </a>
       </li>
-      <li className="ml-4">
-        <a href={`https://looksrare.org/collections/${item.primary_asset_contracts[0].address}`} target="_blank" rel="noreferrer">
-          <LooksRare width={20} height={20} className="text-slate-400 fill-current" />
-        </a>
-      </li>
+      {item.primary_asset_contracts.length > 0 ? (
+        <li className="ml-4">
+          <a href={`https://looksrare.org/collections/${item.primary_asset_contracts[0].address}`} target="_blank" rel="noreferrer">
+            <LooksRare width={20} height={20} className="text-slate-400 fill-current"/> </a>
+        </li>
+      ) : ('')}
     </ul>
   )
 }

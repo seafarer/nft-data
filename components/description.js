@@ -18,7 +18,7 @@ export default function Description({...item}) {
 
   return(
     <>
-      <button className="text-slate-300" onClick={openModal}>
+      <button className="text-slate-300 text-base" onClick={openModal}>
         <FontAwesomeIcon icon={faCircleInfo} />
       </button>
 

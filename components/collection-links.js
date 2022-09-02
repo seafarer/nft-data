@@ -4,6 +4,7 @@ import {faDiscord, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-ic
 import Etherscan from "./svgs/etherscan";
 
 export default function CollectionLinks({ ...item }) {
+
   return (
     <div className="flex ml-3">
       {item.external_url &&
@@ -26,9 +27,11 @@ export default function CollectionLinks({ ...item }) {
           <FontAwesomeIcon icon={faInstagram} />
         </a>
       }
-      <a href={`https://etherscan.io/address/${item.primary_asset_contracts[0].address}`} target="_blank" rel="noreferrer">
-        <div className="mr-4 w-5"><Etherscan width={20} height={20} className="text-slate-400 fill-current" /></div>
-      </a>
+      {item.primary_asset_contracts.length > 0 ? (
+        <a href={`https://etherscan.io/address/${item.primary_asset_contracts[0].address}`} target="_blank" rel="noreferrer">
+          <div className="mr-4 w-5"><Etherscan width={20} height={20} className="text-slate-400 fill-current" /></div>
+        </a>
+      ) : ('')}
     </div>
   )
 }
