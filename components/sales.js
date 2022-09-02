@@ -17,7 +17,7 @@ const Sales = ({ ...sales }) => {
         {tokens.map(token => (
           <div className="flex flex-col" key={token.id}>
             <a href={`https://opensea.io/assets/ethereum/${token.asset.asset_contract.address}/${token.asset.token_id}`} target="_blank" rel="noreferrer">
-              <Image className="block rounded-t-lg" src={token.asset.image_thumbnail_url.replace("=s128", "=s256")} alt="token image" width={256} height={256} />
+              <Image className="block rounded-t-lg" src={token.asset.image_thumbnail_url.replace("=s128", "=s288")} alt="token image" width={288} height={288} />
             </a>
             <div className="content border-b border-l border-r rounded-b-lg p-4 text-right">
               <span className="text-xs text-slate-400">sale price</span> <span className="font-display font-bold text-2xl text-slate-600">{+(token.total_price * (10 ** -18)).toFixed(3)}</span><br />
