@@ -9,6 +9,7 @@ import Description from "../../components/description";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/pro-regular-svg-icons';
 import StatsGrid from "../../components/statsgrid";
+import Breadcrumb from "../../components/breadcrumb";
 
 const Collection = ({ collections, sales }) => {
   const router = useRouter()
@@ -25,19 +26,7 @@ const Collection = ({ collections, sales }) => {
   return (
     <article>
       <div className="relative w-full h-vh-33" style={style}>
-        <div className="absolute top-0 left-0 bg-indigo-100 p-1.5 pr-2.5">
-          <div className="text-xs flex align-center text-slate-500">
-            <Link href="/">
-              <a className="text-slate-800">Home</a>
-            </Link>
-            <span className="text-slate-600 mx-1">
-              <FontAwesomeIcon icon={faChevronRight} className="w-1.5 inline" />
-            </span> Collections
-            <span className="text-slate-600 mx-1">
-              <FontAwesomeIcon icon={faChevronRight} className="inline w-1.5" />
-            </span> {item.name}
-          </div>
-        </div>
+        <Breadcrumb {...item} />
         <div className="external-links absolute bottom-0 bg-opacity-80 w-full py-2 bg-slate-100">
           <div className="container mx-auto flex justify-between items-center">
             <CollectionLinks {...item} />
