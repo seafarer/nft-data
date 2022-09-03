@@ -28,9 +28,9 @@ function EmptyQueryBoundary({ children, fallback }) {
   return children;
 }
 
-export default function Search() {
+export default function Search({ classnames, hitStyles }) {
   return (
-    <div className="px-6 pt-10 md:w-1/2 relative">
+    <div className={classnames}>
       <InstantSearch searchClient={searchClient} indexName="dev_nftdata">
         <SearchBox
           classNames={{
@@ -44,7 +44,7 @@ export default function Search() {
         />
         <EmptyQueryBoundary fallback={null}>
           <Hits hitComponent={Hit} classNames={{
-            root: 'absolute bg-white pt-2 px-1.5 pb-3 right-0 left-6 drop-shadow top-[84px] right-6'
+            root: `${hitStyles}`
           }} />
         </EmptyQueryBoundary>
       </InstantSearch>

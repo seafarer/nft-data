@@ -1,15 +1,14 @@
 import { useRouter } from 'next/router'
 import Image from "next/future/image";
-import Link from "next/link"
 import Sales from "../../components/sales";
+import Layout from "../../components/layout";
 import CollectionLinks from "../../components/collection-links";
 import Marketplaces from "../../components/marketplaces";
 import MainStats from "../../components/mainstats";
 import Description from "../../components/description";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/pro-regular-svg-icons';
 import StatsGrid from "../../components/statsgrid";
 import Breadcrumb from "../../components/breadcrumb";
+import Headtags from "../../components/headtags";
 
 const Collection = ({ collections, sales }) => {
   const router = useRouter()
@@ -25,6 +24,12 @@ const Collection = ({ collections, sales }) => {
 
   return (
     <article>
+      <Headtags
+        title={`NFT stats for ${item.name}`}
+        description={`Floor price, latest sales and data for ${item.name}. 24 hour, 7 day, and 30 days tracked with average price, num of sales and more`}
+        pageslug={`${process.env.VERCEL_URL}/collection/${item.slug}`}
+        image={item.image_url.replace('=s120', '=s512')}
+      />
       <div className="relative w-full h-vh-33" style={style}>
         <Breadcrumb {...item} />
         <div className="external-links absolute bottom-0 bg-opacity-80 w-full py-2 bg-slate-100">
@@ -64,7 +69,14 @@ const Collection = ({ collections, sales }) => {
       </div>
     </article>
   )
+}
 
+Collection.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      {page}
+    </Layout>
+  )
 }
 
 export async function getServerSideProps(slug) {

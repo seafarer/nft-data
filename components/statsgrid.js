@@ -13,7 +13,11 @@ export default function StatsGrid({...item}) {
             <p className="text-sm narrow text-slate-400">One day volume</p>
           </div>
           <div>
-            <p className="font-bold display text-xl text-slate-500">{(item.stats.one_day_change).toFixed(2)}%</p>
+            {item.stats.one_day_change > 0 ? (
+              <p className="font-bold display text-xl text-emerald-500">{(item.stats.one_day_change).toFixed(2)}%</p>
+            ) : (
+              <p className="font-bold display text-xl text-red-500">{(item.stats.one_day_change).toFixed(2)}%</p>
+            )}
             <p className="text-sm narrow text-slate-400">One day change</p>
           </div>
           <div>
@@ -34,7 +38,11 @@ export default function StatsGrid({...item}) {
             <p className="text-sm narrow text-slate-400">Seven day volume</p>
           </div>
           <div>
-            <p className="font-bold display text-xl text-slate-500">{item.stats.seven_day_change.toFixed(2)}%</p>
+            {item.stats.seven_day_change > 0 ? (
+              <p className="font-bold display text-xl text-emerald-500">{item.stats.seven_day_change.toFixed(2)}%</p>
+            ) : (
+              <p className="font-bold display text-xl text-red-500">{item.stats.seven_day_change.toFixed(2)}%</p>
+            )}
             <p className="text-sm narrow text-slate-400">Seven day change</p>
           </div>
           <div>
@@ -42,7 +50,11 @@ export default function StatsGrid({...item}) {
             <p className="text-sm narrow text-slate-400">Seven day avg. price</p>
           </div>
           <div>
-            <p className="font-bold display text-xl text-slate-500">{Math.round(item.stats.seven_day_difference)}Ξ</p>
+            {Math.round(item.stats.seven_day_difference) > 0 ? (
+              <p className="font-bold display text-xl text-emerald-500">{Math.round(item.stats.seven_day_difference)}Ξ</p>
+            ) : (
+              <p className="font-bold display text-xl text-red-500">{Math.round(item.stats.seven_day_difference)}Ξ</p>
+            )}
             <p className="text-sm narrow text-slate-400">Seven day difference</p>
           </div>
         </div>
@@ -59,7 +71,11 @@ export default function StatsGrid({...item}) {
             <p className="text-sm narrow text-slate-400">30 day volume</p>
           </div>
           <div>
-            <p className="font-bold display text-xl text-slate-500">{item.stats.thirty_day_change.toFixed(2)}%</p>
+            {item.stats.thirty_day_change > 0 ? (
+              <p className="font-bold display text-xl text-emerald-500">{item.stats.thirty_day_change.toFixed(2)}%</p>
+            ) : (
+              <p className="font-bold display text-xl text-red-500">{item.stats.thirty_day_change.toFixed(2)}%</p>
+            )}
             <p className="text-sm narrow text-slate-400">30 day change</p>
           </div>
           <div>
@@ -67,7 +83,11 @@ export default function StatsGrid({...item}) {
             <p className="text-sm narrow text-slate-400">30 day avg. price</p>
           </div>
           <div>
-            <p className="font-bold display text-xl text-slate-500">{Math.round(item.stats.thirty_day_difference).toLocaleString("en-US")}Ξ</p>
+            {item.stats.thirty_day_difference > 0 ? (
+              <p className="font-bold display text-xl text-emerald-500">{Math.round(item.stats.thirty_day_difference).toLocaleString("en-US")}Ξ</p>
+            ) : (
+              <p className="font-bold display text-xl text-red-500">{Math.round(item.stats.thirty_day_difference).toLocaleString("en-US")}Ξ</p>
+            )}
             <p className="text-sm narrow text-slate-400">30 day difference</p>
           </div>
         </div>

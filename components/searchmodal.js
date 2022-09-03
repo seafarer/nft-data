@@ -1,11 +1,30 @@
-import { useState, Fragment } from 'react'
+import { useState, useEffect, Fragment } from 'react'
+import { useRouter } from "next/router"
 import { Dialog, Transition } from '@headlessui/react'
-import ReactMarkdown from "react-markdown";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons'
+import { faMagnifyingGlass } from '@fortawesome/pro-solid-svg-icons'
 import { faCircleXmark } from "@fortawesome/pro-duotone-svg-icons";
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false
+import Search from "./search";
 
-export default function Description({...item}) {
+export default function SearchModal() {
+
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleRouteChange = (url, { shallow }) => {
+      closeModal()
+    }
+
+    router.events.on('routeChangeStart', handleRouteChange)
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange)
+    }
+  }, [])
+
   const [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -18,8 +37,8 @@ export default function Description({...item}) {
 
   return (
     <>
-      <button className="text-slate-300 text-base" onClick={openModal}>
-        <FontAwesomeIcon icon={faCircleInfo} />
+      <button className="text-slate-50 text-xl" onClick={openModal}>
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -48,12 +67,10 @@ export default function Description({...item}) {
                 leaveTo="opacity-0 scale-95"
               >
 
-                <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title className="font-bold text-2xl mb-2">About {item.name}</Dialog.Title>
-                  <Dialog.Description className="collection-description text-slate-600">
-                    <ReactMarkdown>
-                      {item.description}
-                    </ReactMarkdown>
+                <Dialog.Panel className="w-full max-w-lg transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Title className="font-bold text-2xl mb-6">Search NFTs</Dialog.Title>
+                  <Dialog.Description className="relative" as="div">
+                    <Search classnames="" hitStyles="h-96 overflow-scroll absolute bg-white pt-2 px-1.5 pb-3 right-0 left-0 drop-shadow top-[44px]" />
                   </Dialog.Description>
                   <button className="absolute top-1 right-2 md:top-3 md:right-4 text-xl text-indigo-500" onClick={() => setIsOpen(false)}>
                     <div className="sr-only">Close</div>

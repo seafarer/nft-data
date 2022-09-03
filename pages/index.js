@@ -1,14 +1,22 @@
+import LayoutHome from "../components/layouthome";
 import Featured from "../components/featured";
 import Search from "../components/search";
+import Headtags from "../components/headtags";
 
 const api = require('cosmicjs')();
 const bucket = api.bucket({
-  slug: 'nft-stats-production',
-  read_key: '7UCY5i9JNe5PQpHKtVDMHOZaRV0UiUJcqOR4Dr4cDPLPAoMjfB'
+  slug: process.env.NEXT_PUBLIC_COSMIC_SLUG,
+  read_key: process.env.NEXT_PUBLIC_COSMIC_READ_KEY
 })
 
 const Home = ({ posts }) => (
-  <main className="min-h-screen">
+  <>
+  <Headtags
+    title="NFT Lookup"
+    description="Quick stats for your favorite NFT collections on the Ethereum blockchain"
+    pageslug="/"
+  />
+  <div className="min-h-screen">
     <div className="max-w-4xl mx-auto">
       <div className="masthead flex flex-col md:flex-row py-16 md:py-28 px-3">
         <div className="intro text-center md:w-1/2 md:pr-12">
@@ -17,12 +25,21 @@ const Home = ({ posts }) => (
             dangerouslySetInnerHTML={{__html: posts[0].content}}
           />
         </div>
-        <Search />
+        <Search classnames="px-6 pt-10 md:w-1/2 relative" hitStyles="h-96 absolute bg-white pt-2 px-1.5 pb-3 right-0 left-6 drop-shadow top-[84px] right-6" />
       </div>
       <Featured collection={posts[0].metadata.featured_collection} />
     </div>
-  </main>
+  </div>
+  </>
 )
+
+Home.getLayout = function getLayout(page) {
+  return (
+    <LayoutHome>
+      {page}
+    </LayoutHome>
+  )
+}
 
 export async function getStaticProps() {
   const data = await bucket.objects
@@ -31,6 +48,7 @@ export async function getStaticProps() {
       slug: "nft-data"
     })
     .props("slug,title,content,metadata") // response properties
+
   const posts = await data.objects;
   return {
     props: {
