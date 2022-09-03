@@ -27,7 +27,7 @@ const Collection = ({ collections, sales }) => {
       <Headtags
         title={`NFT stats for ${item.name}`}
         description={`Floor price, latest sales and data for ${item.name}. 24 hour, 7 day, and 30 days tracked with average price, num of sales and more`}
-        pageslug={`${process.env.VERCEL_URL}/collection/${item.slug}`}
+        pageslug={`https://www.nftlookup.app/collection/${item.slug}`}
         image={item.image_url.replace('=s120', '=s512')}
       />
       <div className="relative w-full h-vh-33" style={style}>
