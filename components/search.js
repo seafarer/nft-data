@@ -8,13 +8,11 @@ const searchClient = algoliasearch(algoliaId, alogliaApi);
 
 function Hit({ hit }) {
   return (
-      <div>
-        <Link href={`/collection/${hit.slug}`}>
-          <a className="py-2 px-1.5 hover:bg-yellow-100 block">
-            {hit.name}
-          </a>
-        </Link>
-      </div>
+    <Link href={`/collection/${hit.slug}`}>
+      <a className="py-2 px-1.5 hover:bg-yellow-100 block">
+        {hit.name}
+      </a>
+    </Link>
   );
 }
 
@@ -38,13 +36,13 @@ export default function Search({ classnames, hitStyles }) {
             form: 'relative',
             input: 'block w-full pl-9 pr-3 py-2 bg-white border border-slate-300 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-indigo-500 rounded-md focus:ring-1',
             submitIcon: 'absolute top-[10px] left-2 w-[22px] h-[22px]',
-            resetIcon: 'hidden'
+            resetIcon: 'hidden',
           }}
           placeholder="Find a collection"
         />
         <EmptyQueryBoundary fallback={null}>
           <Hits hitComponent={Hit} classNames={{
-            root: `${hitStyles}`
+            root: `${hitStyles}`,
           }} />
         </EmptyQueryBoundary>
       </InstantSearch>

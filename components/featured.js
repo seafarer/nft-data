@@ -23,7 +23,7 @@ export default function Featured({ collection }) {
   }, [])
 
   return (
-    <div className="grid md:grid-cols-2 gap-5 mx-3">
+    <div className="grid md:grid-cols-2 gap-5 mx-3 mb-8">
       {featuredData.map(item => (
         <div className="card flex items-center border border-indigo-300 rounded-xl p-2.5" key={item.collection.slug}>
           <Link href={`/collection/${item.collection.slug}`}>
