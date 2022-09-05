@@ -18,8 +18,12 @@ export default function Description({...item}) {
 
   return (
     <>
-      <button className="text-slate-300 text-base" onClick={openModal}>
+      <button className="text-slate-300 text-base relative flex flex-col items-center group" onClick={openModal}>
         <FontAwesomeIcon icon={faCircleInfo} />
+        <div className="absolute bottom-0 flex flex-col items-center hidden mb-7 group-hover:flex">
+          <span className="relative z-10 p-2 text-xs leading-tight text-slate-400 whitespace-no-wrap bg-white shadow-lg">Project Description</span>
+          <div className="w-3 h-3 -mt-2 rotate-45 bg-white z-10"></div>
+        </div>
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
