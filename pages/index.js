@@ -25,7 +25,7 @@ const Home = ({ posts }) => (
             dangerouslySetInnerHTML={{__html: posts[0].content}}
           />
         </div>
-        <Search classnames="px-6 pt-10 md:w-1/2 relative" hitStyles="h-96 absolute bg-white pt-2 px-1.5 pb-3 right-0 left-6 drop-shadow top-[84px] right-6 overflow-scroll" />
+        <Search classnames="px-6 pt-10 md:w-1/2 relative" hitStyles="max-h-96 absolute bg-white pt-2 px-1.5 pb-3 right-0 left-6 drop-shadow top-[84px] right-6 overflow-scroll" />
       </div>
       <Featured collection={posts[0].metadata.featured_collection} />
     </div>

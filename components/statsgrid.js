@@ -63,7 +63,7 @@ export default function StatsGrid({...item}) {
         <div className="absolute right-0 top-0 text-white text-6xl font-bold leading-statbox z-0">30<span className="font-normal">d</span></div>
         <div className="grid grid-cols-2 gap-4 relative z-10">
           <div>
-            <p className="font-bold display text-xl text-slate-500">{item.stats.thirty_day_sales}Ξ</p>
+            <p className="font-bold display text-xl text-slate-500">{item.stats.thirty_day_sales}</p>
             <p className="text-sm narrow text-slate-400">30 day sales</p>
           </div>
           <div>

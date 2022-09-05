@@ -25,3 +25,12 @@
 .collection-description p {
   margin-bottom: 1em;
 }
+
+.collection-description a {
+  @apply text-blue-500;
+}
+
+#nprogress .bar {
+  background: white !important;
+  height: 4px !important;
+}

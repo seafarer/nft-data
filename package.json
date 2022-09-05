@@ -24,6 +24,7 @@
     "algoliasearch": "^4.14.2",
     "cosmicjs": "^4.2.7",
     "next": "12.2.5",
+    "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-instantsearch-hooks-web": "^6.32.1",

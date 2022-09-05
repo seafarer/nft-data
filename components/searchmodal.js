@@ -70,7 +70,7 @@ export default function SearchModal() {
                 <Dialog.Panel className="w-full max-w-lg transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title className="font-bold text-2xl mb-6">Search NFTs</Dialog.Title>
                   <Dialog.Description className="relative" as="div">
-                    <Search classnames="" hitStyles="h-96 overflow-scroll absolute bg-white pt-2 px-1.5 pb-3 right-0 left-0 drop-shadow top-[44px]" />
+                    <Search classnames="" hitStyles="max-h-96 overflow-scroll absolute bg-white pt-2 px-1.5 pb-3 right-0 left-0 drop-shadow top-[44px]" />
                   </Dialog.Description>
                   <button className="absolute top-1 right-2 md:top-3 md:right-4 text-xl text-indigo-500" onClick={() => setIsOpen(false)}>
                     <div className="sr-only">Close</div>

@@ -50,7 +50,7 @@ export default function Description({...item}) {
 
                 <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title className="font-bold text-2xl mb-2">About {item.name}</Dialog.Title>
-                  <Dialog.Description className="collection-description text-slate-600">
+                  <Dialog.Description className="collection-description text-slate-600" as="div">
                     <ReactMarkdown>
                       {item.description}
                     </ReactMarkdown>
