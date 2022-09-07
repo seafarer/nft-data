@@ -82,7 +82,7 @@ Collection.getLayout = function getLayout(page) {
 export async function getServerSideProps(slug) {
   const options = {
     method: 'GET',
-    headers: {Accept: 'application/json', 'X-API-KEY': '6659c81f7e1642978e6102cda8c20e58'}
+    headers: {Accept: 'application/json', 'X-API-KEY': process.env.NEXT_PUBLIC_OPENSEA_API}
   };
   const today = Date.now()
   const past = today - 604800000
