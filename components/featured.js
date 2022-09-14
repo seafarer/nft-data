@@ -37,7 +37,8 @@ export default function Featured({ collection }) {
                 <a>{item.collection.name}</a>
               </Link>
             </h2>
-            <p className="leading-none text-right font-bold text-slate-400">{item.collection.stats.floor_price.toFixed(2)}Ξ</p>
+            {console.log(item.collection.stats.floor_price)}
+            <p className="leading-none text-right font-bold text-slate-400">{item.collection.stats.floor_price.toLocaleString("en-US")}Ξ</p>
           </div>
         </div>
       ))}
