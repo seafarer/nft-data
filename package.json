@@ -22,7 +22,7 @@
     "@fortawesome/sharp-solid-svg-icons": "^6.2.0",
     "@headlessui/react": "^1.6.6",
     "algoliasearch": "^4.14.2",
-    "cosmicjs": "^4.2.7",
+    "cosmicjs": "^5.0.5",
     "next": "12.2.5",
     "nprogress": "^0.2.0",
     "react": "18.2.0",
